@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-
 /**
+ * 
  * Module dependencies.
  */
-
 import app from '../app.js';
 import logger from 'debug'
 const debug = logger('mytinerary-back-juliancorrea:server');

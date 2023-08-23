@@ -1,8 +1,7 @@
 import { Schema, model, Types } from "mongoose";
 
-let collection = 'cities';
-
-let schema = new Schema({
+const collection = 'Cities';
+const citySchema = new Schema({
 
     country: {type: String, required: true},
     fundation: {type: String, required: false},
@@ -10,12 +9,12 @@ let schema = new Schema({
     photo: {type: String, required: true},
     city: {type: String, required: true},
     smalldescription: {type: String, required: true},
-    admin_id: {type: Types.ObjectId, ref: 'users'},
+    admin_id: {type: String, ref: 'users'},
 },
 {
     timestamps: true
 });
 
-let City = model(collection, schema);
+const City = model(collection, citySchema);
 
 export default City;

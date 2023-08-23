@@ -1,4 +1,4 @@
-import 'dotenv/config.js';
+// import 'dotenv/config.js';
 import './config/database.js'
 import createError from 'http-errors';
 import express from 'express';
@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 
-import indexRouter from './routes/index.js';
+import indexRouter from './routes/indexRouter.js';
 
 import { __dirname } from './utils.js';
 
