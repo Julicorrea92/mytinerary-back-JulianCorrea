@@ -1,23 +1,28 @@
 import City from "../../models/City.js";
 
 const newCity = {
-    createCity: (req, res, next) => {
+    createCity: async (req, res, next) => {
 
         try {
-            City.create(req.body)
-
-        } // console.log(req.body);
+            // console.log(req.body);
+            const city = await City.create(req.body)
+            console.log(city);
+            res.json({
+                response: cities,
+                success: true,
+                error: null
+            })
+        }
         catch (error) {
             console.log(error);
+            res.json({
+                response: null,
+                success: false,
+                error: error
+            })
         }
     }
 }
-//         res.json({
-//             // // response: usersJson,
-//             // response: cities,
-//             success: true,
-//             error: null
-//     })}
-// }
+
 
 export default newCity;

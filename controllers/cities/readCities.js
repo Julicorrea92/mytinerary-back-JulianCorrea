@@ -1,23 +1,47 @@
-import cities from '../citiesJson.js'
+// import cities from '../citiesJson.js'
+import City from '../../models/City.js'
 
 const readCity = {
-    getAllCities: (req, res, next) => {
+    getAllCities: async (req, res, next) => {
+        
+        let cities;
+        let error = null;
+        let success=true;
+        
+        try {
+            cities = await City.find()
+        } catch (err) {
+            console.log(err);
+            success = false;
+            error = err;            
+        }
         res.json({
-            // response: usersJson,
             response: cities,
             success: true,
             error: null
         })
     },
-    getOneCity: (req, res, next) => {
-        const { city } = req.params
-        const oneCity = cities.find(oneCity => oneCity.city == city)
+    getOneCity: async (req, res, next) => {
+        console.log(req.params);
+        const { id } = req.params;
+        
+        let cities;
+        let error = null;
+        let success=true;
+        
+        try {
+            cities = await City.findById(id)
+        } catch (err) {
+            console.log(err);
+            success = false;
+            error = err;            
+        }
         res.json({
-            // response: usersJson,
-            response: oneCity,
+            response: cities,
             success: true,
             error: null
         })
+
     }
 }
 export default readCity;

@@ -1,13 +1,13 @@
 import City from "../../models/City.js";
 
-const deleteCity = {
+const updateCity = {
 
-    clearCity: async (req, res, next) => {
+    modifyCity: async (req, res, next) => {
         const { id } = req.params;
         let cities;
         let success = true;
         try {
-            cities = await City.findOneAndDelete({ _id: id });
+            cities = await City.findOneAndUpdate({ _id: id }, req.body, { new: true });
             res.json({
                 response: cities,
                 success
@@ -20,4 +20,5 @@ const deleteCity = {
     }
 }
 
-export default deleteCity;
+export default updateCity;
+
